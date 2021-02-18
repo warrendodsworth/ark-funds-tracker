@@ -1,0 +1,182 @@
+[
+    {
+        "label": "config",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "config",
+        "description": "config",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "csv",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "csv",
+        "description": "csv",
+        "detail": "csv",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2",
+        "description": "psycopg2",
+        "detail": "psycopg2",
+        "documentation": {}
+    },
+    {
+        "label": "psycopg2.extras",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "psycopg2.extras",
+        "description": "psycopg2.extras",
+        "detail": "psycopg2.extras",
+        "documentation": {}
+    },
+    {
+        "label": "alpaca_trade_api",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "alpaca_trade_api",
+        "description": "alpaca_trade_api",
+        "detail": "alpaca_trade_api",
+        "documentation": {}
+    },
+    {
+        "label": "API_URL",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "API_URL = 'https://paper-api.alpaca.markets'\nAPI_KEY = 'yourkey'\nAPI_SECRET = 'yoursecret'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "API_KEY",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "API_KEY = 'yourkey'\nAPI_SECRET = 'yoursecret'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "API_SECRET",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "API_SECRET = 'yoursecret'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "DB_HOST",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "DB_USER",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "DB_PASS",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "DB_NAME",
+        "kind": 5,
+        "importPath": "config",
+        "description": "config",
+        "peekOfCode": "DB_NAME = 'etfdb'",
+        "detail": "config",
+        "documentation": {}
+    },
+    {
+        "label": "connection",
+        "kind": 5,
+        "importPath": "populate_etfs",
+        "description": "populate_etfs",
+        "peekOfCode": "connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)\ncursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\ncursor.execute(\"select * from stock where is_etf = TRUE\")\netfs = cursor.fetchall()\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)",
+        "detail": "populate_etfs",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "kind": 5,
+        "importPath": "populate_etfs",
+        "description": "populate_etfs",
+        "peekOfCode": "cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\ncursor.execute(\"select * from stock where is_etf = TRUE\")\netfs = cursor.fetchall()\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)",
+        "detail": "populate_etfs",
+        "documentation": {}
+    },
+    {
+        "label": "etfs",
+        "kind": 5,
+        "importPath": "populate_etfs",
+        "description": "populate_etfs",
+        "peekOfCode": "etfs = cursor.fetchall()\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)\n            for row in reader:\n                ticker = row[3]",
+        "detail": "populate_etfs",
+        "documentation": {}
+    },
+    {
+        "label": "dates",
+        "kind": 5,
+        "importPath": "populate_etfs",
+        "description": "populate_etfs",
+        "peekOfCode": "dates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)\n            for row in reader:\n                ticker = row[3]\n                if ticker: ",
+        "detail": "populate_etfs",
+        "documentation": {}
+    },
+    {
+        "label": "connection",
+        "kind": 5,
+        "importPath": "populate_stocks",
+        "description": "populate_stocks",
+        "peekOfCode": "connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)\ncursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\napi = tradeapi.REST(config.API_KEY, config.API_SECRET, base_url=config.API_URL)\nassets = api.list_assets()\nfor asset in assets:\n    print(f\"Inserting stock {asset.name} {asset.symbol}\")\n    cursor.execute(\"\"\"\n        INSERT INTO stock (name, symbol, exchange, is_etf) \n        VALUES (%s, %s, %s, false)\n    \"\"\", (asset.name, asset.symbol, asset.exchange))",
+        "detail": "populate_stocks",
+        "documentation": {}
+    },
+    {
+        "label": "cursor",
+        "kind": 5,
+        "importPath": "populate_stocks",
+        "description": "populate_stocks",
+        "peekOfCode": "cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\napi = tradeapi.REST(config.API_KEY, config.API_SECRET, base_url=config.API_URL)\nassets = api.list_assets()\nfor asset in assets:\n    print(f\"Inserting stock {asset.name} {asset.symbol}\")\n    cursor.execute(\"\"\"\n        INSERT INTO stock (name, symbol, exchange, is_etf) \n        VALUES (%s, %s, %s, false)\n    \"\"\", (asset.name, asset.symbol, asset.exchange))\nconnection.commit()",
+        "detail": "populate_stocks",
+        "documentation": {}
+    },
+    {
+        "label": "api",
+        "kind": 5,
+        "importPath": "populate_stocks",
+        "description": "populate_stocks",
+        "peekOfCode": "api = tradeapi.REST(config.API_KEY, config.API_SECRET, base_url=config.API_URL)\nassets = api.list_assets()\nfor asset in assets:\n    print(f\"Inserting stock {asset.name} {asset.symbol}\")\n    cursor.execute(\"\"\"\n        INSERT INTO stock (name, symbol, exchange, is_etf) \n        VALUES (%s, %s, %s, false)\n    \"\"\", (asset.name, asset.symbol, asset.exchange))\nconnection.commit()",
+        "detail": "populate_stocks",
+        "documentation": {}
+    },
+    {
+        "label": "assets",
+        "kind": 5,
+        "importPath": "populate_stocks",
+        "description": "populate_stocks",
+        "peekOfCode": "assets = api.list_assets()\nfor asset in assets:\n    print(f\"Inserting stock {asset.name} {asset.symbol}\")\n    cursor.execute(\"\"\"\n        INSERT INTO stock (name, symbol, exchange, is_etf) \n        VALUES (%s, %s, %s, false)\n    \"\"\", (asset.name, asset.symbol, asset.exchange))\nconnection.commit()",
+        "detail": "populate_stocks",
+        "documentation": {}
+    }
+]
