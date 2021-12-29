@@ -49,7 +49,7 @@
         "kind": 5,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "API_URL = 'https://paper-api.alpaca.markets'\nAPI_KEY = 'yourkey'\nAPI_SECRET = 'yoursecret'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "peekOfCode": "API_URL = 'https://paper-api.alpaca.markets'\nAPI_KEY = 'PK4AEGUXX36HENABTA5K'\nAPI_SECRET = 'Ba4t2RPDVEui4tms66YjuKIoKEDOxWaRNyZsc3i4'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
         "detail": "config",
         "documentation": {}
     },
@@ -58,7 +58,7 @@
         "kind": 5,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "API_KEY = 'yourkey'\nAPI_SECRET = 'yoursecret'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "peekOfCode": "API_KEY = 'PK4AEGUXX36HENABTA5K'\nAPI_SECRET = 'Ba4t2RPDVEui4tms66YjuKIoKEDOxWaRNyZsc3i4'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
         "detail": "config",
         "documentation": {}
     },
@@ -67,7 +67,7 @@
         "kind": 5,
         "importPath": "config",
         "description": "config",
-        "peekOfCode": "API_SECRET = 'yoursecret'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
+        "peekOfCode": "API_SECRET = 'Ba4t2RPDVEui4tms66YjuKIoKEDOxWaRNyZsc3i4'\nDB_HOST = 'localhost'\nDB_USER = 'postgres'\nDB_PASS = 'password'\nDB_NAME = 'etfdb'",
         "detail": "config",
         "documentation": {}
     },
@@ -112,7 +112,7 @@
         "kind": 5,
         "importPath": "populate_etfs",
         "description": "populate_etfs",
-        "peekOfCode": "connection = psycopg2.connect(host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)\ncursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\ncursor.execute(\"select * from stock where is_etf = TRUE\")\netfs = cursor.fetchall()\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)",
+        "peekOfCode": "connection = psycopg2.connect(\n    host=config.DB_HOST, database=config.DB_NAME, user=config.DB_USER, password=config.DB_PASS)\ncursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\ncursor.execute(\"select * from stock where is_etf = TRUE\")\netfs = cursor.fetchall()\nprint('Hi there', etfs)\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])",
         "detail": "populate_etfs",
         "documentation": {}
     },
@@ -121,7 +121,7 @@
         "kind": 5,
         "importPath": "populate_etfs",
         "description": "populate_etfs",
-        "peekOfCode": "cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\ncursor.execute(\"select * from stock where is_etf = TRUE\")\netfs = cursor.fetchall()\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)",
+        "peekOfCode": "cursor = connection.cursor(cursor_factory=psycopg2.extras.DictCursor)\ncursor.execute(\"select * from stock where is_etf = TRUE\")\netfs = cursor.fetchall()\nprint('Hi there', etfs)\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)",
         "detail": "populate_etfs",
         "documentation": {}
     },
@@ -130,7 +130,7 @@
         "kind": 5,
         "importPath": "populate_etfs",
         "description": "populate_etfs",
-        "peekOfCode": "etfs = cursor.fetchall()\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)\n            for row in reader:\n                ticker = row[3]",
+        "peekOfCode": "etfs = cursor.fetchall()\nprint('Hi there', etfs)\ndates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)  # skip csv headers row\n            for row in reader:",
         "detail": "populate_etfs",
         "documentation": {}
     },
@@ -139,7 +139,7 @@
         "kind": 5,
         "importPath": "populate_etfs",
         "description": "populate_etfs",
-        "peekOfCode": "dates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)\n            for row in reader:\n                ticker = row[3]\n                if ticker: ",
+        "peekOfCode": "dates = ['2021-01-25', '2021-01-26']\nfor current_date in dates:\n    for etf in etfs:\n        print(etf['symbol'])\n        with open(f\"data/{current_date}/{etf['symbol']}.csv\") as f:\n            reader = csv.reader(f)\n            next(reader)  # skip csv headers row\n            for row in reader:\n                ticker = row[3]\n                if ticker:  # check for rows that have a symbol",
         "detail": "populate_etfs",
         "documentation": {}
     },
